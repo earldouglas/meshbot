@@ -12,7 +12,9 @@ class StubMeshInterface(MeshInterface):
 
     send_queue: Queue
 
-    def sendAndReceive(self: MeshInterface, payload: str) -> Optional[MeshPacket]:
+    def sendAndReceive(
+        self: MeshInterface, payload: str, timeout: float = 0.1
+    ) -> Optional[MeshPacket]:
 
         tx = stub_packet(self.myInfo.my_node_num, payload)
         self._handlePacketFromRadio(tx)
@@ -20,7 +22,7 @@ class StubMeshInterface(MeshInterface):
         rx: MeshPacket = None
 
         try:
-            rx = self.send_queue.get(timeout=0.1)
+            rx = self.send_queue.get(timeout=timeout)
             self.send_queue.task_done()
         except Empty:
             pass

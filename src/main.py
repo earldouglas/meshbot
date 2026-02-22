@@ -1,20 +1,15 @@
 #!/usr/bin/env python3
 
-import meshbot
 from meshtastic.serial_interface import SerialInterface
-from time import sleep
+from throttle import Throttle
+import meshbot
 
 
 def main() -> None:
-
-    mesh_interface = SerialInterface()
-
+    throttle = Throttle(SerialInterface(), 10)
     meshbot.start()
-
-    while True:
-        sleep(1)
-
-    mesh_interface.close()
+    throttle.join()
+    throttle.mesh_interface.close()
 
 
 if __name__ == "__main__":
