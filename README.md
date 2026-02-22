@@ -5,10 +5,29 @@ MeshBot is a basic call-and-response bot for
 
 ## Features
 
-### Ping
+<table>
+<tr><th>Rx</th><th>Tx</th></tr>
 
-* Rx: `Ping`
-* Tx: `Pong`
+<tr>
+<td>
+<pre>Ping</pre>
+</td>
+<td>
+<pre>Pong</pre>
+</td>
+</tr>
+
+<tr>
+<td>
+<pre>Test</pre>
+</td>
+<td>
+<pre>3af5: Received after 2 hops.
+SNR 11.75dB  RSSI -71dBm</pre>
+</td>
+</tr>
+
+</table>
 
 ## Usage
 
