@@ -27,6 +27,16 @@ SNR 11.75dB  RSSI -71dBm</pre>
 </td>
 </tr>
 
+<tr>
+<td>
+<pre>Fortune</pre>
+</td>
+<td>
+<pre>Let's call it an accidental feature.
+	--Larry Wall</pre>
+</td>
+</tr>
+
 </table>
 
 ## Usage

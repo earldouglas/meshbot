@@ -1,6 +1,7 @@
 from pubsub.pub import subscribe
 from re import IGNORECASE
 from re import fullmatch
+from repliers import fortune
 from repliers import ping
 from repliers import test
 from typing import Callable
@@ -28,6 +29,7 @@ def on_receive_message(packet, interface) -> None:
     for get_reply in [
         lambda: ping.get_reply(packet),
         lambda: test.get_reply(packet, mesh_interface),
+        lambda: fortune.get_reply(packet),
     ]:
         reply: Optional[str] = get_reply()
         if reply is not None:
