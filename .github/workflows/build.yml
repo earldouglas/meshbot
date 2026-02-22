@@ -1,0 +1,24 @@
+name: "build"
+
+on:
+  - pull_request
+  - push
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-24.04
+
+    runs-on: '${{ matrix.os }}'
+
+    steps:
+    - uses: actions/checkout@v5
+    - uses: cachix/install-nix-action@v31
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
+    - run: nix-build
