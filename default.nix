@@ -46,7 +46,7 @@ python.pkgs.buildPythonApplication rec {
     version = "0.0.0"
     requires-python = "==3.14"
     dependencies = [
-      "meshtastic==2.7.7",
+      "meshtastic==2.7.8",
       "fortune-python==${fortune-python-version}",
     ]
     [project.scripts]
