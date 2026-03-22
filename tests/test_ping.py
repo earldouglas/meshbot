@@ -1,9 +1,10 @@
+from meshbot import Meshbot
 from stub_mesh_interface import StubMeshInterface
-import meshbot
 
 
 def test_ping():
 
+    meshbot = Meshbot(qth=None)
     meshbot.start()
 
     mesh_interface = StubMeshInterface()
