@@ -10,13 +10,18 @@ from typing import Optional
 
 class StubMeshInterface(MeshInterface):
 
+    hop_count: int
     send_queue: Queue
 
     def sendAndReceive(
         self: MeshInterface, payload: str, timeout: float = 0.1
     ) -> Optional[MeshPacket]:
 
-        tx = stub_packet(self.myInfo.my_node_num, payload)
+        tx = stub_packet(
+            my_node_num=self.myInfo.my_node_num,
+            payload=payload,
+            hop_count=self.hop_count,
+        )
         self._handlePacketFromRadio(tx)
 
         rx: MeshPacket = None
@@ -33,9 +38,10 @@ class StubMeshInterface(MeshInterface):
         if "packet" in toRadio:
             self.send_queue.put(toRadio.packet)
 
-    def __init__(self: MeshInterface) -> None:
+    def __init__(self: MeshInterface, hop_count: int = 2) -> None:
         super().__init__()
 
+        self.hop_count = hop_count
         self.send_queue: Queue = Queue()
 
         my_node_id = "!00000001"
