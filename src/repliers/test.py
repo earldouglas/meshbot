@@ -35,7 +35,8 @@ def get_reply(packet, mesh_interface) -> Optional[str]:
 
             hop_count = _get_hop_count(packet)
             if hop_count is not None:
-                hop_string = f" after {hop_count} hops"
+                hop_plural = "hop" if hop_count == 1 else "hops"
+                hop_string = f" after {hop_count} {hop_plural}"
 
             name = _get_node_name(mesh_interface, packet["from"])
             if name is None:

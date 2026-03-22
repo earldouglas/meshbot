@@ -55,8 +55,8 @@ python.pkgs.buildPythonApplication rec {
   '';
 
   checkPhase = ''
-    mypy --ignore-missing-imports src
-    black --check --diff src
+    mypy --ignore-missing-imports src tests
+    black --check --diff src tests
     pytest tests/
   '';
 }
