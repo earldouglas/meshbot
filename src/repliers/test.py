@@ -19,7 +19,7 @@ def _get_node_name(mesh_interface: MeshInterface, node_id: int) -> Optional[str]
         return None
 
 
-def get_reply(packet, mesh_interface) -> Optional[str]:
+def get_reply(qth: Optional[str], packet, mesh_interface) -> Optional[str]:
 
     reply: Optional[str] = None
 
@@ -31,8 +31,9 @@ def get_reply(packet, mesh_interface) -> Optional[str]:
             rx_rssi = packet["rxRssi"]
             rx_time = packet["rxTime"]
 
-            hop_string = ""
+            qth_string = "" if qth is None else f" in {qth}"
 
+            hop_string = ""
             hop_count = _get_hop_count(packet)
             if hop_count is not None:
                 hop_plural = "hop" if hop_count == 1 else "hops"
@@ -42,6 +43,6 @@ def get_reply(packet, mesh_interface) -> Optional[str]:
             if name is None:
                 name = packet["fromId"]
 
-            reply = f"{name}: Received{hop_string}.\nSNR {rx_snr}dB  RSSI {rx_rssi}dBm"
+            reply = f"{name}: Received{qth_string}{hop_string}.\nSNR {rx_snr}dB  RSSI {rx_rssi}dBm"
 
     return reply

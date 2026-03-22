@@ -1,6 +1,6 @@
 [![Build status](https://github.com/earldouglas/meshbot/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/earldouglas/meshbot/actions/workflows/build.yml)
 
-MeshBot is a basic call-and-response bot for
+Meshbot is a basic call-and-response bot for
 [Meshtastic](https://meshtastic.org/) nodes.
 
 ## Features

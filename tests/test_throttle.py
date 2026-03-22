@@ -1,10 +1,11 @@
+from meshbot import Meshbot
 from stub_mesh_interface import StubMeshInterface
 from throttle import Throttle
-import meshbot
 
 
 def test_throttle():
 
+    meshbot = Meshbot(qth=None)
     meshbot.start()
 
     throttle = Throttle(StubMeshInterface(), 0.1)
